@@ -9,6 +9,8 @@ import 'package:my_app/app/modules/home/bindings/home_bindings.dart';
 import 'package:my_app/app/modules/home/views/home_view.dart';
 import 'package:my_app/app/modules/login/bindings/login_bindings.dart';
 import 'package:my_app/app/modules/login/views/login_view.dart';
+import 'package:my_app/app/modules/push_notification/bindings/push_notification_bindings.dart';
+import 'package:my_app/app/modules/push_notification/views/push_notification_view.dart';
 import 'package:my_app/app/modules/query/bindings/query_bindings.dart';
 import 'package:my_app/app/modules/query/views/query_view.dart';
 import 'package:my_app/app/modules/reset_password/bindings/reset_password_bindings.dart';
@@ -65,6 +67,11 @@ class AppPages {
       name: Routes.FILE_UPLOAD,
       page: () => FileUploadView(),
       binding: FileUploadBindings(),
+    ),
+    GetPage(
+      name: Routes.PUSH_NOTIFICATION,
+      page: () => PushNotificationView(),
+      binding: PushNotificationBindings(),
     ),
   ];
 }

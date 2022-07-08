@@ -8,4 +8,5 @@ abstract class Routes {
   static const QUERY = '/query';
   static const STORE = '/store';
   static const FILE_UPLOAD = '/file-upload';
+  static const PUSH_NOTIFICATION = '/push-notification';
 }

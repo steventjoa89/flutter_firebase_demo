@@ -2,29 +2,67 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_app/app/controllers/auth_controller.dart';
-import 'package:my_app/app/modules/home/views/home_view.dart';
-import 'package:my_app/app/modules/login/views/login_view.dart';
 import 'package:my_app/app/routes/app_pages.dart';
 import 'package:my_app/app/routes/routes.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:my_app/app/utils/loading.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+  print(
+      'Handling background message => This is when the application paused/closed.');
+}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final authC = Get.put(AuthController(), permanent: true);
+  Future<void> setupInteractedMessage() async {
+    // Get any messages which caused the application to open from
+    // a terminated state.
+    RemoteMessage? initialMessage =
+        await FirebaseMessaging.instance.getInitialMessage();
+
+    // If the message also contains a data property with a "type" of "chat",
+    // navigate to a chat screen
+    if (initialMessage != null) {
+      _handleMessage(initialMessage);
+    }
+
+    // Also handle any interaction when the app is in the background via a
+    // Stream listener
+    FirebaseMessaging.onMessageOpenedApp.listen(_handleMessage);
+  }
+
+  void _handleMessage(RemoteMessage message) {
+    print(message);
+
+    // if (message.data['type'] == 'chat') {
+    //   Navigator.pushNamed(context, '/chat',
+    //     arguments: ChatArguments(message),
+    //   );
+    // }
+  }
+
+  // final authC = Get.put(AuthController(), permanent: true);
 
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'File Upload',
-      initialRoute: Routes.FILE_UPLOAD,
+      title: 'Push Notification',
+      initialRoute: Routes.PUSH_NOTIFICATION,
       getPages: AppPages.routes,
     );
+
+    // return GetMaterialApp(
+    //   title: 'File Upload',
+    //   initialRoute: Routes.FILE_UPLOAD,
+    //   getPages: AppPages.routes,
+    // );
 
     // return GetMaterialApp(
     //   title: 'Storage',
