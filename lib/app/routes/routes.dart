@@ -5,4 +5,5 @@ abstract class Routes {
   static const RESET_PASSWORD = '/reset-password';
   static const ADD_PRODUCT = '/add-product';
   static const EDIT_PRODUCT = '/edit-product';
+  static const QUERY = '/query';
 }
