@@ -12,7 +12,9 @@ class AddProductController extends GetxController {
   void addProduct(String name, String price) async {
     try {
       CollectionReference products = firestore.collection('products');
-      await products.add({"name": name, "price": price});
+      String dateNow = DateTime.now().toIso8601String();
+      await products
+          .add({"name": name, "price": int.parse(price), "time": dateNow});
       Get.defaultDialog(
         title: "Berhasil",
         middleText: 'Berhasil menambahkan product',

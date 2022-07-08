@@ -13,6 +13,32 @@ class HomeController extends GetxController {
 
   Stream<QuerySnapshot<Object?>> streamData() {
     CollectionReference products = firestore.collection('products');
-    return products.snapshots();
+    return products
+        // .where('price', isGreaterThan: 20)
+        .orderBy('time', descending: true)
+        .snapshots();
+  }
+
+  void deleteById(String docId) async {
+    print(docId);
+    DocumentReference docRef = firestore.collection('products').doc(docId);
+
+    try {
+      Get.defaultDialog(
+        title: "Delete Data",
+        middleText: 'Apa kamu yakin menghapus data?',
+        textCancel: 'No',
+        textConfirm: 'Ya',
+        onConfirm: () async {
+          await docRef.delete();
+          Get.back();
+        },
+      );
+    } catch (e) {
+      Get.defaultDialog(
+        title: "Error",
+        middleText: 'Gagal menghapus data',
+      );
+    }
   }
 }

@@ -18,7 +18,7 @@ class EditProductController extends GetxController {
     try {
       DocumentReference docData = firestore.collection('products').doc(docId);
 
-      await docData.update({"name": name, "price": price});
+      await docData.update({"name": name, "price": int.parse(price)});
 
       Get.defaultDialog(
         title: "Berhasil",
