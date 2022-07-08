@@ -22,10 +22,22 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Query',
-      initialRoute: Routes.QUERY,
+      initialRoute: Routes.STORE,
       getPages: AppPages.routes,
     );
 
+    /**
+     * This is for QUERY DB
+     */
+    // return GetMaterialApp(
+    //   title: 'Query',
+    //   initialRoute: Routes.QUERY,
+    //   getPages: AppPages.routes,
+    // );
+
+    /**
+     * This is DB
+     */
     // return StreamBuilder<User?>(
     //   stream: authC.streamAuthStatus,
     //   builder: (context, snapshot) {

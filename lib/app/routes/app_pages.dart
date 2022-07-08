@@ -13,6 +13,8 @@ import 'package:my_app/app/modules/reset_password/bindings/reset_password_bindin
 import 'package:my_app/app/modules/reset_password/views/reset_password_view.dart';
 import 'package:my_app/app/modules/signup/bindings/signup_bindings.dart';
 import 'package:my_app/app/modules/signup/views/signup_view.dart';
+import 'package:my_app/app/modules/store/bindings/query_bindings.dart';
+import 'package:my_app/app/modules/store/views/store_view.dart';
 import 'package:my_app/app/routes/routes.dart';
 
 class AppPages {
@@ -51,6 +53,11 @@ class AppPages {
       name: Routes.QUERY,
       page: () => QueryView(),
       binding: QueryBindings(),
+    ),
+    GetPage(
+      name: Routes.STORE,
+      page: () => StoreView(),
+      binding: StoreBindings(),
     ),
   ];
 }

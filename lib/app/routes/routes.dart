@@ -6,4 +6,5 @@ abstract class Routes {
   static const ADD_PRODUCT = '/add-product';
   static const EDIT_PRODUCT = '/edit-product';
   static const QUERY = '/query';
+  static const STORE = '/store';
 }
