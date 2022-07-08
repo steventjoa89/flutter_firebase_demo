@@ -21,10 +21,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Query',
-      initialRoute: Routes.STORE,
+      title: 'File Upload',
+      initialRoute: Routes.FILE_UPLOAD,
       getPages: AppPages.routes,
     );
+
+    // return GetMaterialApp(
+    //   title: 'Storage',
+    //   initialRoute: Routes.STORE,
+    //   getPages: AppPages.routes,
+    // );
 
     /**
      * This is for QUERY DB

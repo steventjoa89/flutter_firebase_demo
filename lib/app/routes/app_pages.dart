@@ -3,6 +3,8 @@ import 'package:my_app/app/modules/add-product/bindings/add_product_bindings.dar
 import 'package:my_app/app/modules/add-product/views/add_product_view.dart';
 import 'package:my_app/app/modules/edit-product/bindings/edit_product_bindings.dart';
 import 'package:my_app/app/modules/edit-product/views/edit_product_view.dart';
+import 'package:my_app/app/modules/file-upload/bindings/file_upload_bindings.dart';
+import 'package:my_app/app/modules/file-upload/views/file_upload_view.dart';
 import 'package:my_app/app/modules/home/bindings/home_bindings.dart';
 import 'package:my_app/app/modules/home/views/home_view.dart';
 import 'package:my_app/app/modules/login/bindings/login_bindings.dart';
@@ -58,6 +60,11 @@ class AppPages {
       name: Routes.STORE,
       page: () => StoreView(),
       binding: StoreBindings(),
+    ),
+    GetPage(
+      name: Routes.FILE_UPLOAD,
+      page: () => FileUploadView(),
+      binding: FileUploadBindings(),
     ),
   ];
 }
